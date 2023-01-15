@@ -1,2 +1,2 @@
-require("gugsrs.remap")
 require("gugsrs.set")
+require("gugsrs.remap")
