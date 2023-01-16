@@ -47,5 +47,12 @@ return require('packer').startup(function(use)
   }
 
   use('theprimeagen/vim-be-good')
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+  use ('mfussenegger/nvim-dap')
 
   end)
