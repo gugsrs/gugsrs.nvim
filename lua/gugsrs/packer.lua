@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
 
+  -- LSP and autocompletion
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  requires = {
@@ -47,12 +48,24 @@ return require('packer').startup(function(use)
   }
 
   use('theprimeagen/vim-be-good')
+
   use {
       'numToStr/Comment.nvim',
       config = function()
           require('Comment').setup()
       end
   }
+
+  -- DAP
   use ('mfussenegger/nvim-dap')
+  use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+  use {
+      "microsoft/vscode-js-debug",
+      opt = true,
+      run = "npm install --legacy-peer-deps && npm run compile",
+      tag = "v1.*"
+  }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use { "theHamsta/nvim-dap-virtual-text" }
 
   end)
