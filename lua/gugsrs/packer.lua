@@ -30,10 +30,11 @@ return require('packer').startup(function(use)
     use('theprimeagen/git-worktree.nvim')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+    use('github/copilot.vim')
 
-    -- LSP and autocompletion
     use {
         'VonHeikemen/lsp-zero.nvim',
+        tag = "v3.x",
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -47,11 +48,12 @@ return require('packer').startup(function(use)
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            -- Snippet Collection (Optional)
-            { 'rafamadriz/friendly-snippets' },
+            {
+                "L3MON4D3/LuaSnip",
+                tag = "v2.*",
+                run = "make install_jsregexp",
+                requires = { 'rafamadriz/friendly-snippets' },
+            },
         }
     }
 
@@ -70,7 +72,7 @@ return require('packer').startup(function(use)
     use {
         "microsoft/vscode-js-debug",
         opt = true,
-        run = "npm install --legacy-peer-deps && npm run compile",
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
         tag = "v1.*"
     }
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
@@ -79,5 +81,10 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
-
+    use {
+      "unisonweb/unison",
+      branch = "trunk",
+      rtp = "/editor-support/vim"
+    }
+    vim.o.runtimepath = vim.o.runtimepath .. ",/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim"
 end)

@@ -1,6 +1,9 @@
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_format = require('lsp-zero').cmp_format()
+require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup {
   snippet = {
@@ -8,10 +11,14 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  formatting = cmp_format,
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -38,6 +45,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'nvim_lua' },
   },
 }
 
