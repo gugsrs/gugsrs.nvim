@@ -1,4 +1,5 @@
 local builtin = require('telescope.builtin')
+require("telescope").load_extension("recent_files")
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
@@ -7,3 +8,6 @@ vim.keymap.set('n', '<leader>ph', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>pk', builtin.keymaps, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>w', builtin.grep_string, {})
+vim.api.nvim_set_keymap("n", "<leader>pr",
+    [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+    { noremap = true, silent = true })
