@@ -11,13 +11,9 @@ return require('packer').startup(function(use)
     use { 'smartpde/telescope-recent-files' }
     use { 'nvim-telescope/telescope-file-browser.nvim' }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
+    -- Colorschemes
+    use { 'rose-pine/neovim', as = 'rose-pine', }
+    use { "catppuccin/nvim", as = "catppuccin", config = function() vim.cmd('colorscheme catppuccin-macchiato') end }
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -27,7 +23,7 @@ return require('packer').startup(function(use)
         end,
     }
     use { 'nvim-treesitter/nvim-treesitter-context' }
-    use { 'theprimeagen/harpoon', branch='harpoon2' }
+    use { 'theprimeagen/harpoon', branch = 'harpoon2' }
     use { 'theprimeagen/git-worktree.nvim' }
     use { 'mbbill/undotree' }
     use { 'tpope/vim-fugitive' }
@@ -87,5 +83,6 @@ return require('packer').startup(function(use)
         branch = 'trunk',
         rtp = '/editor-support/vim'
     }
-    vim.o.runtimepath = vim.o.runtimepath .. ',/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim'
+    vim.o.runtimepath = vim.o.runtimepath ..
+    ',/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim'
 end)
