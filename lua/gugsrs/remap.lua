@@ -40,3 +40,16 @@ vim.keymap.set("n", "<leader>z",  ":bp<CR>")
 vim.keymap.set("n", "<leader>x", ":bn<CR>")
 
 vim.keymap.set("n", "<leader>c", ":bd<CR>")
+
+vim.g.copilot_no_tab_map = true
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
+    expr = true,
+    replace_keycodes = false,
+    desc = "Copilot: accept suggestion"
+
+})
+vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)', { desc = "Copilot: accept word" })
+vim.keymap.set('i', '<C-]>', '<Plug>(copilot-dismiss)', { desc = "Copilot: dismiss suggestion" })
+vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)', { desc = "Copilot: next suggestion" })
+vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)', { desc = "Copilot: previous suggestion" })
+vim.keymap.set('i', '<M-\\>', '<Plug>(copilot-suggest)', { desc = "Copilot: force suggestion" })

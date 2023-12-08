@@ -8,7 +8,8 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use {"smartpde/telescope-recent-files"}
+    use { 'smartpde/telescope-recent-files' }
+    use { 'nvim-telescope/telescope-file-browser.nvim' }
 
     use({
         'rose-pine/neovim',
@@ -25,16 +26,16 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
-    use('nvim-treesitter/nvim-treesitter-context')
-    use('theprimeagen/harpoon')
-    use('theprimeagen/git-worktree.nvim')
-    use('mbbill/undotree')
-    use('tpope/vim-fugitive')
-    use('github/copilot.vim')
+    use { 'nvim-treesitter/nvim-treesitter-context' }
+    use { 'theprimeagen/harpoon', branch='harpoon2' }
+    use { 'theprimeagen/git-worktree.nvim' }
+    use { 'mbbill/undotree' }
+    use { 'tpope/vim-fugitive' }
+    use { 'github/copilot.vim' }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
-        tag = "v3.x",
+        tag = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -49,15 +50,15 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
             {
-                "L3MON4D3/LuaSnip",
-                tag = "v2.*",
-                run = "make install_jsregexp",
+                'L3MON4D3/LuaSnip',
+                tag = 'v2.*',
+                run = 'make install_jsregexp',
                 requires = { 'rafamadriz/friendly-snippets' },
             },
         }
     }
 
-    use('theprimeagen/vim-be-good')
+    use { 'theprimeagen/vim-be-good' }
 
     use {
         'numToStr/Comment.nvim',
@@ -67,24 +68,24 @@ return require('packer').startup(function(use)
     }
 
     -- DAP
-    use('mfussenegger/nvim-dap')
-    use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+    use { 'mfussenegger/nvim-dap' }
+    use { 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } }
     use {
-        "microsoft/vscode-js-debug",
+        'microsoft/vscode-js-debug',
         opt = true,
-        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-        tag = "v1.*"
+        run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+        tag = 'v1.*'
     }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    use { "theHamsta/nvim-dap-virtual-text" }
+    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+    use { 'theHamsta/nvim-dap-virtual-text' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     use {
-      "unisonweb/unison",
-      branch = "trunk",
-      rtp = "/editor-support/vim"
+        'unisonweb/unison',
+        branch = 'trunk',
+        rtp = '/editor-support/vim'
     }
-    vim.o.runtimepath = vim.o.runtimepath .. ",/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim"
+    vim.o.runtimepath = vim.o.runtimepath .. ',/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim'
 end)
