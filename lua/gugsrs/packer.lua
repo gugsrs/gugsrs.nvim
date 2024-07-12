@@ -64,16 +64,30 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Java
+    -- use {
+    --     'nvim-java/nvim-java',
+    --     requires = {
+    --         { 'nvim-java/lua-async-await' },
+    --         { 'nvim-java/nvim-java-core' },
+    --         { 'nvim-java/nvim-java-test' },
+    --         { 'nvim-java/nvim-java-dap' },
+    --         { 'MunifTanjim/nui.nvim' },
+    --         { 'neovim/nvim-lspconfig' },
+    --         { 'mfussenegger/nvim-dap' },
+    --     },
+    -- }
+
     -- DAP
     use { 'mfussenegger/nvim-dap' }
-    use { 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } }
-    use {
-        'microsoft/vscode-js-debug',
-        opt = true,
-        run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
-        tag = 'v1.*'
-    }
-    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+    -- use { 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } }
+    -- use {
+    --     'microsoft/vscode-js-debug',
+    --     opt = true,
+    --     run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+    --     tag = 'v1.*'
+    -- }
+    -- use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
     use { 'theHamsta/nvim-dap-virtual-text' }
     use {
         'nvim-lualine/lualine.nvim',
@@ -85,5 +99,5 @@ return require('packer').startup(function(use)
         rtp = '/editor-support/vim'
     }
     vim.o.runtimepath = vim.o.runtimepath ..
-    ',/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim'
+        ',/Users/colaborador/.local/share/nvim/site/pack/packer/start/unison/editor-support/vim'
 end)
