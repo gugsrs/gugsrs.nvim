@@ -1,6 +1,17 @@
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
 require("telescope").load_extension("recent_files")
 require("telescope").load_extension("file_browser")
+
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-q>"]   = actions.smart_send_to_qflist + actions.open_qflist,
+      },
+    },
+  }
+}
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
