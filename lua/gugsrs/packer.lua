@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 
     -- Colorschemes
     use { 'rose-pine/neovim', as = 'rose-pine', }
-    use { "catppuccin/nvim", as = "catppuccin", config = function() vim.cmd('colorscheme catppuccin-macchiato') end }
+    use { "catppuccin/nvim", as = "catppuccin", }
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -28,10 +28,11 @@ return require('packer').startup(function(use)
     use { 'mbbill/undotree' }
     use { 'tpope/vim-fugitive' }
     use { 'github/copilot.vim' }
+    use { "sindrets/diffview.nvim" }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
-        tag = 'v3.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
