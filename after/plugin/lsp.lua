@@ -3,14 +3,14 @@ vim.lsp.set_log_level("debug")
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer', 'pylsp', 'lua_ls'},
-  handlers = {
-    lsp_zero.default_setup,
-    lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-    end,
-  }
+    ensure_installed = { 'tsserver', 'rust_analyzer', 'pylsp', 'lua_ls' },
+    handlers = {
+        lsp_zero.default_setup,
+        lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+        end,
+    }
 })
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -147,37 +147,42 @@ vim.diagnostic.config({
 local util = require('lspconfig.util')
 require("lspconfig").pylsp.setup {
     cmd = { 'pylsp' },
-  filetypes = { 'python' },
-  root_dir = function(fname)
-    local root_files = {
-      'pyproject.toml',
-      'setup.py',
-      'setup.cfg',
-      'requirements.txt',
-      'Pipfile',
-    }
-    return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
-  end,
-  single_file_support = true,
+    filetypes = { 'python' },
+    root_dir = function(fname)
+        local root_files = {
+            'pyproject.toml',
+            'setup.py',
+            'setup.cfg',
+            'requirements.txt',
+            'Pipfile',
+        }
+        return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+    end,
+    single_file_support = true,
     settings = {
         pylsp = {
-            configurationSources = {"flake8"},
+            configurationSources = { "flake8" },
             plugins = {
-                -- formatter options
-                black = { enabled = true },
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                -- linter options
-                pylint = { enabled = false },
-                pyflakes = { enabled = false },
+                jedi_completion = { enabled = true },
+                jedi_hover = { enabled = true },
+                jedi_references = { enabled = true },
+                jedi_signature_help = { enabled = true },
+                jedi_symbols = { enabled = true, all_scopes = true },
                 pycodestyle = { enabled = false },
-                flake8 = { enabled = true },
-                -- type checker
-                pylsp_mypy = { enabled = true },
-                -- auto-completion options
-                jedi_completion = { fuzzy = true },
-                -- import sorting
-                pyls_isort = { enabled = true },
+                flake8 = {
+                    enabled = true,
+                    ignore = {},
+                    maxLineLength = 100
+                },
+                mypy = { enabled = false },
+                black = { enabled = true },
+                isort = { enabled = false },
+                yapf = { enabled = false },
+                pylint = { enabled = false },
+                pydocstyle = { enabled = false },
+                mccabe = { enabled = false },
+                preload = { enabled = false },
+                rope_completion = { enabled = true }
             },
         },
     },
@@ -185,3 +190,5 @@ require("lspconfig").pylsp.setup {
         debounce_text_changes = 200,
     },
 }
+
+require('lspconfig').jdtls.setup({})
