@@ -87,7 +87,7 @@ return require('packer').startup(function(use)
     --     run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
     --     tag = 'v1.*'
     -- }
-    -- use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
     use { 'theHamsta/nvim-dap-virtual-text' }
     use {
         'nvim-lualine/lualine.nvim',
